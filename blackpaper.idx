@@ -12,5 +12,5 @@ nim	PasswordStrengthReason	blackpaper.html#PasswordStrengthReason	enum PasswordS
 nim	PasswordStrengthResult	blackpaper.html#PasswordStrengthResult	object PasswordStrengthResult		36
 nim	passwordStrength	blackpaper.html#passwordStrength,string	proc passwordStrength(password: string): PasswordStrengthResult		151
 nim	passwordStrength	blackpaper.html#passwordStrength,string,PasswordStrengthDictionary	proc passwordStrength(password: string; dict: PasswordStrengthDictionary): PasswordStrengthResult		229
-nim	passwordStrength	blackpaper.html#passwordStrength,string,seq[string]	proc passwordStrength(password: string; commonPasswords: seq[string]): PasswordStrengthResult		250
+nim	passwordStrength	blackpaper.html#passwordStrength,string,seq[string]	proc passwordStrength(password: string; commonPasswords: seq[string]): PasswordStrengthResult		259
 nimgrp	passwordstrength	blackpaper.html#passwordStrength-procs-all	proc		151
