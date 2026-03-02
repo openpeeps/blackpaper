@@ -8,7 +8,7 @@
 import std/[strutils, sequtils, math, tables]
 import pkg/floof
 
-import ./dictionary
+import ./blackpaper/dictionary
 export dictionary
 
 ## This module implements a password strength estimator that
