@@ -16,11 +16,11 @@
 - 🚀 Fast and efficient implementation in Nim language
 - 👌 Estimate on length &bullet; character diversity &bullet; repetition &bullet; sequential patterns &bullet; leet substitutions
 - 🔎 Optional common password list for penalizing known weak/common passwords
-- 🚀 SIMD-accelerated fuzzy matching for lightning-fast detection of passwords similar to common or breached passwords
+- 🚀 SIMD-accelerated fuzzy matching for fast detection using [pkg/floof](https://github.com/arashi-software/floof)
 - 💪 Framework-agnostic, can be used in any Nim project
 
-> [NOTE]
-> This package does not provide a common password list. You can eassily find one online and feed it to the estimator. [pkg/floof](https://github.com/arashi-software/floof)
+> [!NOTE]
+> This package does not provide a common password list. You can find one online and feed it to the estimator.
 
 ## Examples
 Here is an example password strength estimation using Blackpaper without a common password list:
