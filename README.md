@@ -1,6 +1,6 @@
 <p align="center">
-  A super simple Password Strength Estimator for Nim language
-  things. 👑 Written in Nim language
+  A super simple Password Strength Estimator<br>
+  Written in 👑 Nim language
 </p>
 
 <p align="center">
