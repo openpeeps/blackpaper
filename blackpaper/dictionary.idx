@@ -1,0 +1,6 @@
+nimTitle	dictionary	blackpaper/dictionary.html	module blackpaper/dictionary		0
+nim	PasswordStrengthDictionary	blackpaper/dictionary.html#PasswordStrengthDictionary	type PasswordStrengthDictionary		5
+nim	mapLeetChar	blackpaper/dictionary.html#mapLeetChar,char	proc mapLeetChar(c: char): char		24
+nim	addToDictionary	blackpaper/dictionary.html#addToDictionary,PasswordStrengthDictionary,openArray[string]	proc addToDictionary(dict: PasswordStrengthDictionary; words: openArray[string])		50
+nim	preparePasswordStrengthDictionary	blackpaper/dictionary.html#preparePasswordStrengthDictionary,openArray[string],int,int	proc preparePasswordStrengthDictionary(words: openArray[string];\n                                  minTokenLen: int = 3; maxLenDelta: int = 3): PasswordStrengthDictionary		62
+nim	fuzzyMaxScore	blackpaper/dictionary.html#fuzzyMaxScore,string,PasswordStrengthDictionary	proc fuzzyMaxScore(password: string; dict: PasswordStrengthDictionary): float32		73
