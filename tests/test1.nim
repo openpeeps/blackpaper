@@ -53,5 +53,5 @@ suite "Surname-based password weaknesses":
   test "Random complex password is not flagged as common surname":
     let dict = preparePasswordStrengthDictionary(surnames, minTokenLen = 3, maxLenDelta = 3)
     let res = passwordStrength("3s4F5j~@!1Z6woG_$o*037C", dict)
-    check res.reason in {SimilarToCommon, NotEnoughVariety}
+    check res.reason != SimilarToCommon
     check res.strength == Strong
