@@ -1,0 +1,16 @@
+nimTitle	blackpaper	blackpaper.html	module blackpaper		0
+nim	Weak	blackpaper.html#Weak	PasswordStrength.Weak		28
+nim	Medium	blackpaper.html#Medium	PasswordStrength.Medium		28
+nim	Strong	blackpaper.html#Strong	PasswordStrength.Strong		28
+nim	PasswordStrength	blackpaper.html#PasswordStrength	enum PasswordStrength		28
+nim	TooShort	blackpaper.html#TooShort	PasswordStrengthReason.TooShort		32
+nim	NotEnoughVariety	blackpaper.html#NotEnoughVariety	PasswordStrengthReason.NotEnoughVariety		32
+nim	TooPredictable	blackpaper.html#TooPredictable	PasswordStrengthReason.TooPredictable		32
+nim	SimilarToCommon	blackpaper.html#SimilarToCommon	PasswordStrengthReason.SimilarToCommon		32
+nim	GoodComplexity	blackpaper.html#GoodComplexity	PasswordStrengthReason.GoodComplexity		32
+nim	PasswordStrengthReason	blackpaper.html#PasswordStrengthReason	enum PasswordStrengthReason		32
+nim	PasswordStrengthResult	blackpaper.html#PasswordStrengthResult	object PasswordStrengthResult		36
+nim	passwordStrength	blackpaper.html#passwordStrength,string	proc passwordStrength(password: string): PasswordStrengthResult		151
+nim	passwordStrength	blackpaper.html#passwordStrength,string,PasswordStrengthDictionary	proc passwordStrength(password: string; dict: PasswordStrengthDictionary): PasswordStrengthResult		229
+nim	passwordStrength	blackpaper.html#passwordStrength,string,seq[string]	proc passwordStrength(password: string; commonPasswords: seq[string]): PasswordStrengthResult		250
+nimgrp	passwordstrength	blackpaper.html#passwordStrength-procs-all	proc		151
