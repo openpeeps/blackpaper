@@ -234,18 +234,27 @@ proc passwordStrength*(password: string, dict: PasswordStrengthDictionary): Pass
   result = passwordStrength(password)
 
   let maxCommonScore = fuzzyMaxScore(password, dict)
+  let isSimilar = maxCommonScore >= 0.50'f32   # was likely too strict
 
   result.score -= maxCommonScore * 3.0'f32
   if result.score < 0.0'f32:
     result.score = 0.0'f32
 
-  if maxCommonScore >= 0.75'f32:
-    result.strength = Weak
-    result.reason = SimilarToCommon
-  elif maxCommonScore >= 0.55'f32:
-    if result.strength == Strong:
+  if isSimilar:
+    if maxCommonScore >= 0.70'f32:
+      result.strength = Weak
+    elif result.strength == Strong:
       result.strength = Medium
     result.reason = SimilarToCommon
+
+  # Do not override reason if already flagged as similar
+  if not isSimilar:
+    if result.score < 2.2'f32:
+      result.strength = Weak
+      result.reason = NotEnoughVariety
+    elif result.score < 3.8'f32 and result.strength == Strong:
+      result.strength = Medium
+      result.reason = NotEnoughVariety
 
 proc passwordStrength*(password: string, commonPasswords: seq[string]): PasswordStrengthResult =
   ## Complexity score + optional fuzzy penalty against provided common passwords.

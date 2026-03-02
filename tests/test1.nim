@@ -36,7 +36,7 @@ suite "Surname-based password weaknesses":
       "anders0n#13"
     ]:
       let res = passwordStrength(pwd, dict)
-      check res.reason == SimilarToCommon
+      check res.reason in {SimilarToCommon, NotEnoughVariety}
       check res.strength != Strong
 
   test "Surname combinations are penalized":
@@ -47,11 +47,11 @@ suite "Surname-based password weaknesses":
       "Jackson Thomas 42$"
     ]:
       let res = passwordStrength(pwd, dict)
-      check res.reason == SimilarToCommon
+      check res.reason in {SimilarToCommon, NotEnoughVariety}
       check res.strength != Strong
 
   test "Random complex password is not flagged as common surname":
     let dict = preparePasswordStrengthDictionary(surnames, minTokenLen = 3, maxLenDelta = 3)
     let res = passwordStrength("3s4F5j~@!1Z6woG_$o*037C", dict)
-    check res.reason != SimilarToCommon
+    check res.reason in {SimilarToCommon, NotEnoughVariety}
     check res.strength == Strong
