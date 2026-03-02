@@ -55,5 +55,5 @@ for pwd in ["Word Fox Jumped Over", "P@ssw0rd", "3s4F5j~@!1Z6woG"]:
 - 😎 [Get €20 in cloud credits from Hetzner](https://hetzner.cloud/?ref=Hm0mYGM9NxZ4)
 
 ### 🎩 License
-{PKG} | MIT license. [Made by Humans from OpenPeeps](https://github.com/openpeeps).<br>
+MIT license. [Made by Humans from OpenPeeps](https://github.com/openpeeps).<br>
 Copyright OpenPeeps & Contributors &mdash; All rights reserved.
