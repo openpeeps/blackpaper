@@ -9,7 +9,7 @@
 
 <p align="center">
   <a href="https://openpeeps.github.io/blackpaper/">API reference</a><br>
-  <img src="https://github.com/openpeeps/pistachio/workflows/test/badge.svg" alt="Github Actions">  <img src="https://github.com/openpeeps/pistachio/workflows/docs/badge.svg" alt="Github Actions">
+  <img src="https://github.com/openpeeps/blackpaper/workflows/test/badge.svg" alt="Github Actions">  <img src="https://github.com/openpeeps/blackpaper/workflows/docs/badge.svg" alt="Github Actions">
 </p>
 
 ## 😍 Key Features
@@ -50,8 +50,8 @@ for pwd in ["Word Fox Jumped Over", "P@ssw0rd", "3s4F5j~@!1Z6woG"]:
 ```
 
 ### ❤ Contributions & Support
-- 🐛 Found a bug? [Create a new Issue](/issues)
-- 👋 Wanna help? [Fork it!](/fork)
+- 🐛 Found a bug? [Create a new Issue](https://github.com/openpeeps/blackpaper/issues)
+- 👋 Wanna help? [Fork it!](https://github.com/openpeeps/blackpaper/fork)
 - 😎 [Get €20 in cloud credits from Hetzner](https://hetzner.cloud/?ref=Hm0mYGM9NxZ4)
 
 ### 🎩 License
