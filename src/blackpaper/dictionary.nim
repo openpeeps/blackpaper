@@ -1,5 +1,18 @@
+# A password strength estimator based on length, char diversity, repetition
+# sequential patterns, and leet substitutions, with optional fuzzy
+# matching against common passwords.
+#
+#   (c) 2026 MIT License | Made by Humans from OpenPeeps
+#   https://github.com/openpeeps/blackpaper
+
+
 import std/[strutils, sequtils, math, tables, sets, algorithm]
 import pkg/floof
+
+## This module implements a dictionary for the password strength estimator,
+## allowing for efficient exact and fuzzy matching against a list of common passwords,
+## usually sourced from leaked password datasets, or dictionary of common words (nammes, places, etc)
+## to catch people using easily guessable passwords.
 
 type
   PasswordStrengthDictionary* = ref object
@@ -59,14 +72,14 @@ proc addToDictionary*(dict: PasswordStrengthDictionary, words: openArray[string]
       dict.byLen[n.len] = @[]
     dict.byLen[n.len].add(n)
 
-proc preparePasswordStrengthDictionary*( words: openArray[string],
-        minTokenLen: int = 3, maxLenDelta: int = 3): PasswordStrengthDictionary =
+proc preparePasswordStrengthDictionary*(words: openArray[string],
+        minTokenLen: int = 3,
+        maxLenDelta: int = 3
+  ): PasswordStrengthDictionary =
   ## Initializes a reusable dictionary for passwordStrength(password, dict)
   new(result)
   result.minTokenLen = max(1, minTokenLen)
   result.maxLenDelta = max(0, maxLenDelta)
-  result.byLen = initTable[int, seq[string]]()
-  result.seen = initHashSet[string]()
   result.addToDictionary(words)
   result.entries.sort(system.cmp[string])
 
