@@ -16,13 +16,16 @@
 <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAB3RJTUUH4QQQEwksSS9ZWwAAAk1JREFUWMPtll2ITVEUx39nn/O7Y5qR8f05wtCUUr6ZIS++8pEnkZInPImneaCQ5METNdOkeFBKUhMPRIkHKfEuUZSUlGlKPN2TrgfncpvmnntnmlEyq1Z7t89/rf9a6+y99oZxGZf/XeIq61EdtgKXgdXA0xrYAvBjOIF1AI9zvjcC74BSpndrJPkBWDScTF8Aa4E3wDlgHbASaANmVqlcCnwHvgDvgVfAJ+AikAAvgfVZwLnSVZHZaOuKoQi3ZOMi4NkYkpe1p4J7A8BpYAD49hfIy/oqG0+hLomiKP2L5L+1ubn5115S+3OAn4EnwBlgMzCjyt6ZAnQCJ4A7wOs88iRJHvw50HoujuPBoCKwHWiosy8MdfZnAdcHk8dxXFJ3VQbQlCTJvRBCGdRbD4M6uc5glpY3eAihpN5S5w12diSEcCCEcKUO4ljdr15T76ur1FDDLIQQ3qv71EdDOe3Kxj3leRXyk+pxdWnFWod6Wt2bY3de3aSuUHcPBVimHs7mK9WrmeOF6lR1o9qnzskh2ar2qm1qizpfXaPeVGdlmGN5pb09qMxz1Xb1kLqgzn1RyH7JUXW52lr5e/Kqi9qpto7V1atuUzfnARrV7jEib1T76gG2qxdGmXyiekkt1GswPTtek0aBfJp6YySGBfWg2tPQ0FAYgf1stUfdmdcjarbYJEniKIq6gY/Aw+zWHAC+p2labGpqiorFYgGYCEzN7oQdQClN07O1/EfDyGgC0ALMBdYAi4FyK+4H3gLPsxfR1zRNi+NP7nH5J+QntnXe5B5mpfQAAAAASUVORK5CYII=">
 
 <!-- CSS -->
-<link rel="stylesheet" type="text/css" href="nimdoc.out.css?v=2.2.8">
+<link rel="stylesheet" type="text/css" href="nimdoc.out.css?v=2.2.10">
 
 <!-- JS -->
-<script type="text/javascript" src="dochack.js?v=2.2.8"></script>
+<script type="text/javascript" src="dochack.js?v=2.2.10"></script>
 </head>
 <body>
   <div class="document" id="documentId">
+    <input type="checkbox" id="nav-toggle" hidden>
+    <label for="nav-toggle" id="nav-burger">&#9776;</label>
+    <label for="nav-toggle" id="nav-overlay"></label>
     <div class="container">
       <h1 class="title">blackpaper</h1>
       <div class="row">
@@ -112,7 +115,7 @@
   <h1><a class="toc-backref" href="#7">Types</a></h1>
   <dl class="item">
     <div id="PasswordStrength">
-  <dt><pre><a href="index.html#PasswordStrength"><span class="Identifier">PasswordStrength</span></a> <span class="Other">=</span> <span class="Keyword">enum</span>
+  <dt><pre><a href="#PasswordStrength"><span class="Identifier">PasswordStrength</span></a> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">Weak</span><span class="Other">,</span> <span class="Identifier">Medium</span><span class="Other">,</span> <span class="Identifier">Strong</span></pre></dt>
   <dd>
     
@@ -121,7 +124,7 @@
   </dd>
 </div>
 <div id="PasswordStrengthReason">
-  <dt><pre><a href="index.html#PasswordStrengthReason"><span class="Identifier">PasswordStrengthReason</span></a> <span class="Other">=</span> <span class="Keyword">enum</span>
+  <dt><pre><a href="#PasswordStrengthReason"><span class="Identifier">PasswordStrengthReason</span></a> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">TooShort</span><span class="Other">,</span> <span class="Identifier">NotEnoughVariety</span><span class="Other">,</span> <span class="Identifier">TooPredictable</span><span class="Other">,</span> <span class="Identifier">SimilarToCommon</span><span class="Other">,</span> <span class="Identifier">GoodComplexity</span></pre></dt>
   <dd>
     
@@ -130,12 +133,12 @@
   </dd>
 </div>
 <div id="PasswordStrengthResult">
-  <dt><pre><a href="index.html#PasswordStrengthResult"><span class="Identifier">PasswordStrengthResult</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
-  <span class="Identifier">strength</span><span class="Operator">*</span><span class="Other">:</span> <a href="index.html#PasswordStrength"><span class="Identifier">PasswordStrength</span></a> <span class="Comment">## A float score representing the calculated strength</span>
+  <dt><pre><a href="#PasswordStrengthResult"><span class="Identifier">PasswordStrengthResult</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">strength</span><span class="Operator">*</span><span class="Other">:</span> <a href="#PasswordStrength"><span class="Identifier">PasswordStrength</span></a> <span class="Comment">## A float score representing the calculated strength</span>
                               <span class="Comment">## of the password. Higher is stronger.</span>
   <span class="Identifier">score</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">float32</span>            <span class="Comment">## A human-readable reason explaining the strength</span>
                              <span class="Comment">## assessment, useful for feedback to users.</span>
-  <span class="Identifier">reason</span><span class="Operator">*</span><span class="Other">:</span> <a href="index.html#PasswordStrengthReason"><span class="Identifier">PasswordStrengthReason</span></a></pre></dt>
+  <span class="Identifier">reason</span><span class="Operator">*</span><span class="Other">:</span> <a href="#PasswordStrengthReason"><span class="Identifier">PasswordStrengthReason</span></a></pre></dt>
   <dd>
     
     The result of a password strength evaluation, including the strength category,
@@ -150,7 +153,7 @@
   <dl class="item">
     <div id="passwordStrength-procs-all">
   <div id="passwordStrength,string">
-  <dt><pre><span class="Keyword">proc</span> <a href="#passwordStrength%2Cstring"><span class="Identifier">passwordStrength</span></a><span class="Other">(</span><span class="Identifier">password</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="index.html#PasswordStrengthResult"><span class="Identifier">PasswordStrengthResult</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+  <dt><pre><span class="Keyword">proc</span> <a href="#passwordStrength%2Cstring"><span class="Identifier">passwordStrength</span></a><span class="Other">(</span><span class="Identifier">password</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="#PasswordStrengthResult"><span class="Identifier">PasswordStrengthResult</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -159,7 +162,7 @@
   </dd>
 </div>
 <div id="passwordStrength,string,seq[string]">
-  <dt><pre><span class="Keyword">proc</span> <a href="#passwordStrength%2Cstring%2Cseq%5Bstring%5D"><span class="Identifier">passwordStrength</span></a><span class="Other">(</span><span class="Identifier">password</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">commonPasswords</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="index.html#PasswordStrengthResult"><span class="Identifier">PasswordStrengthResult</span></a> {.
+  <dt><pre><span class="Keyword">proc</span> <a href="#passwordStrength%2Cstring%2Cseq%5Bstring%5D"><span class="Identifier">passwordStrength</span></a><span class="Other">(</span><span class="Identifier">password</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">commonPasswords</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="#PasswordStrengthResult"><span class="Identifier">PasswordStrengthResult</span></a> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -168,7 +171,7 @@
   </dd>
 </div>
 <div id="passwordStrength,string,PasswordStrengthDictionary">
-  <dt><pre><span class="Keyword">proc</span> <a href="#passwordStrength%2Cstring%2CPasswordStrengthDictionary"><span class="Identifier">passwordStrength</span></a><span class="Other">(</span><span class="Identifier">password</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">dict</span><span class="Other">:</span> <a href="blackpaper/dictionary.html#PasswordStrengthDictionary"><span class="Identifier">PasswordStrengthDictionary</span></a><span class="Other">)</span><span class="Other">:</span> <a href="index.html#PasswordStrengthResult"><span class="Identifier">PasswordStrengthResult</span></a> {.
+  <dt><pre><span class="Keyword">proc</span> <a href="#passwordStrength%2Cstring%2CPasswordStrengthDictionary"><span class="Identifier">passwordStrength</span></a><span class="Other">(</span><span class="Identifier">password</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">dict</span><span class="Other">:</span> <a href="blackpaper/dictionary.html#PasswordStrengthDictionary"><span class="Identifier">PasswordStrengthDictionary</span></a><span class="Other">)</span><span class="Other">:</span> <a href="#PasswordStrengthResult"><span class="Identifier">PasswordStrengthResult</span></a> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
@@ -196,7 +199,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2026-04-06 18:36:37 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2026-08-06 15:29:50 UTC</small>
       </div>
     </div>
   </div>
