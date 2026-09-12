@@ -212,6 +212,9 @@ proc passwordStrength*(password: string): PasswordStrengthResult =
   if diversity < 2 or score < 2.2:
     strength = Weak
     reason = TooPredictable
+  elif score < 3.0:
+    strength = Weak
+    reason = NotEnoughVariety
   elif score < 3.8:
     strength = Medium
     reason = NotEnoughVariety
@@ -248,7 +251,7 @@ proc passwordStrength*(password: string, dict: PasswordStrengthDictionary): Pass
 
   # Do not override reason if already flagged as similar
   if not isSimilar:
-    if result.score < 2.2'f32:
+    if result.score < 3.0'f32:
       result.strength = Weak
       result.reason = NotEnoughVariety
     elif result.score < 3.8'f32 and result.strength == Strong:
@@ -305,6 +308,9 @@ proc passwordStrength*(password: string, commonPasswords: seq[string]): Password
     if result.score < 2.2'f32:
       result.strength = Weak
       result.reason = TooPredictable
+    elif result.score < 3.0'f32:
+      result.strength = Weak
+      result.reason = NotEnoughVariety
     elif result.score < 3.8'f32 and result.strength == Strong:
       result.strength = Medium
       result.reason = NotEnoughVariety
