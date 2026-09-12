@@ -1,4 +1,14 @@
+import std/strutils
 import ../src/blackpaper
+
+let surnames = readFile("tests/surnames.txt").splitLines()
+for mld in [3, 4]:
+  let dict = preparePasswordStrengthDictionary(surnames, minTokenLen = 3, maxLenDelta = mld)
+  for pwd in ["tayl0r", "m1ller99!", "w1ls0n88#", "th0mas2024!", "jacks0n_77$",
+              "anders0n#13", "Miller Wilson 19!", "3s4F5j~@!1Z6woG_$o*037C"]:
+    let res = passwordStrength(pwd, dict)
+    echo "d", mld, " ", pwd, " -> ", res.strength, " / ", res.reason,
+      " / ", res.score, " / max=", fuzzyMaxScore(pwd, dict)
 
 # Probe planned README examples
 block:
