@@ -1,5 +1,5 @@
 import strutils, unittest
-import blackpaper
+import ../src/blackpaper
 
 test "Common weak passwords are classified as weak":
   let res = passwordStrength("password", @["password", "123456", "qwerty"])

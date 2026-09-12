@@ -6,7 +6,6 @@
 #   https://github.com/openpeeps/blackpaper
 
 import std/[strutils, sequtils, math, tables]
-import pkg/floof
 
 import ./blackpaper/dictionary
 export dictionary
@@ -276,7 +275,7 @@ proc passwordStrength*(password: string, commonPasswords: seq[string]): Password
 
   if fullNorm.len > 0:
     for common in commonNorm:
-      let s = scoreMatchSSE2(fullNorm, common)
+      let s = fuzzySimilarity(fullNorm, common)
       if s > maxCommonScore:
         maxCommonScore = s
 
@@ -285,17 +284,9 @@ proc passwordStrength*(password: string, commonPasswords: seq[string]): Password
     if tokNorm.len < 3: # skip tiny tokens
       continue
     for common in commonNorm:
-      let s = scoreMatchSSE2(tokNorm, common)
+      let s = fuzzySimilarity(tokNorm, common)
       if s > maxCommonScore:
         maxCommonScore = s
-
-  if maxCommonScore >= 0.75'f32:
-    result.strength = Weak
-    result.reason = SimilarToCommon
-  elif maxCommonScore >= 0.55'f32:
-    if result.strength == Strong:
-      result.strength = Medium
-    result.reason = SimilarToCommon
 
   # apply penalty and downgrade classification if needed
   result.score -= maxCommonScore * 3.0'f32

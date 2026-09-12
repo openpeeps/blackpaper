@@ -7,7 +7,7 @@
 
 
 import std/[strutils, sequtils, math, tables, sets, algorithm]
-import pkg/floof
+import openparser/fuzzy
 
 ## This module implements a dictionary for the password strength estimator,
 ## allowing for efficient exact and fuzzy matching against a list of common passwords,
@@ -60,6 +60,25 @@ proc normalizeToken(s: string): string =
     if c.isAlphaNumeric:
       result.add(c)
 
+proc fuzzySimilarity*(a, b: string): float32 =
+  ## Bidirectional normalized similarity in the 0..1 range.
+  ##
+  ## Scores with the shorter string as the query (openparser/fuzzy
+  ## requires the query to be a subsequence of the candidate, so a
+  ## longer password containing a dictionary entry still matches),
+  ## normalized by the query's perfect self-score. Exact matches
+  ## yield 1.0, misses yield 0.0.
+  if a.len == 0 or b.len == 0:
+    return 0.0'f32
+  let (q, c) = if a.len <= b.len: (a, b) else: (b, a)
+  let r = fuzzyScore(q, c)
+  if not r.matched:
+    return 0.0'f32
+  let ideal = fuzzyScore(q, q).score
+  if ideal <= 0.0'f32:
+    return 0.0'f32
+  r.score / ideal
+
 proc addToDictionary*(dict: PasswordStrengthDictionary, words: openArray[string]) =
   ## Add words into a prepared dictionary (normalized + dedup + bucketed by length)
   if dict.isNil: return
@@ -74,7 +93,7 @@ proc addToDictionary*(dict: PasswordStrengthDictionary, words: openArray[string]
 
 proc preparePasswordStrengthDictionary*(words: openArray[string],
         minTokenLen: int = 3,
-        maxLenDelta: int = 3
+        maxLenDelta: int = 4
   ): PasswordStrengthDictionary =
   ## Initializes a reusable dictionary for passwordStrength(password, dict)
   new(result)
@@ -99,7 +118,7 @@ proc fuzzyMaxScore*(password: string, dict: PasswordStrengthDictionary): float32
     for L in lo .. hi:
       if not dict.byLen.hasKey(L): continue
       for common in dict.byLen[L]:
-        let s = scoreMatchSSE2(token, common)
+        let s = fuzzySimilarity(token, common)
         if s > best: best = s
 
   var best = 0.0'f32

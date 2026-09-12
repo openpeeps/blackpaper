@@ -16,7 +16,7 @@
 - 🚀 Fast and efficient implementation in Nim language
 - 👌 Estimate on length &bullet; character diversity &bullet; repetition &bullet; sequential patterns &bullet; leet substitutions
 - 🔎 Optional common password list for penalizing known weak/common passwords
-- 🚀 SIMD-accelerated fuzzy matching for fast detection using [pkg/floof](https://github.com/arashi-software/floof)
+- 🚀 SIMD-accelerated fuzzy matching for fast detection using [openparser/fuzzy](https://github.com/openpeeps/openparser)
 - 💪 Framework-agnostic, can be used in any Nim project
 
 > [!NOTE]
