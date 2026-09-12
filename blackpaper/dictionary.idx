@@ -1,6 +1,7 @@
 nimTitle	dictionary	blackpaper/dictionary.html	module blackpaper/dictionary		0
 nim	PasswordStrengthDictionary	blackpaper/dictionary.html#PasswordStrengthDictionary	type PasswordStrengthDictionary		18
 nim	mapLeetChar	blackpaper/dictionary.html#mapLeetChar,char	proc mapLeetChar(c: char): char		37
-nim	addToDictionary	blackpaper/dictionary.html#addToDictionary,PasswordStrengthDictionary,openArray[string]	proc addToDictionary(dict: PasswordStrengthDictionary; words: openArray[string])		63
-nim	preparePasswordStrengthDictionary	blackpaper/dictionary.html#preparePasswordStrengthDictionary,openArray[string],int,int	proc preparePasswordStrengthDictionary(words: openArray[string];\n                                  minTokenLen: int = 3; maxLenDelta: int = 3): PasswordStrengthDictionary		75
-nim	fuzzyMaxScore	blackpaper/dictionary.html#fuzzyMaxScore,string,PasswordStrengthDictionary	proc fuzzyMaxScore(password: string; dict: PasswordStrengthDictionary): float32		86
+nim	fuzzySimilarity	blackpaper/dictionary.html#fuzzySimilarity,string,string	proc fuzzySimilarity(a, b: string): float32		63
+nim	addToDictionary	blackpaper/dictionary.html#addToDictionary,PasswordStrengthDictionary,openArray[string]	proc addToDictionary(dict: PasswordStrengthDictionary; words: openArray[string])		82
+nim	preparePasswordStrengthDictionary	blackpaper/dictionary.html#preparePasswordStrengthDictionary,openArray[string],int,int	proc preparePasswordStrengthDictionary(words: openArray[string];\n                                  minTokenLen: int = 3; maxLenDelta: int = 4): PasswordStrengthDictionary		94
+nim	fuzzyMaxScore	blackpaper/dictionary.html#fuzzyMaxScore,string,PasswordStrengthDictionary	proc fuzzyMaxScore(password: string; dict: PasswordStrengthDictionary): float32		105
